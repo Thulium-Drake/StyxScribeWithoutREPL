@@ -277,7 +277,6 @@ class StyxScribe():
             setup_proxies()
 
             if platform.system() == "Linux":
-
                 # Hacky means to get the steamapps folder
                 self.steamapps_path = self.executable_purepath.parent.parent.parent.parent
 
@@ -309,11 +308,11 @@ class StyxScribe():
                 )
             else:
                 self.game = await Popen(
-                str(self.args[0]),*self.args[0:],
-                cwd=self.executable_purepath.parent,
-                stdout=PIPE,
-                stderr=STDOUT
-            )
+                    str(self.args[0]),*self.args[0:],
+                    cwd=self.executable_purepath.parent,
+                    stdout=PIPE,
+                    stderr=STDOUT
+                )
 
             self.loop = asyncio.get_event_loop()
             self.queue = asyncio.Queue()
